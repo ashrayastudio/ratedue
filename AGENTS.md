@@ -17,10 +17,12 @@ Missing, stale, conflicting, or `UNKNOWN` evidence keeps the action `BLOCKED`.
 - The exact privacy-policy controller sentence is an approved, required
   exception to the default omission of the founder's legal name. It may appear
   once in `privacy/index.html` and nowhere else in the website source.
-- The `ashrayastudio` GitHub owner, repository URL, `ashraya.ai` contact-domain,
-  and other established identifiers are technical/contact infrastructure, not
-  public legal-operator evidence.
-- Prefer product-led or role-based wording and omit personal-name copyright
+- The `ashrayastudio` GitHub owner and repository URL are internal technical
+  infrastructure. Neither those values nor an Ashraya-branded domain may
+  appear in rendered website content, HTML attributes, or customer contact
+  links.
+- Public email, when approved, must use the exact RateDue product domain.
+  Prefer product-led or role-based wording and omit personal-name copyright
   footers.
 
 The central governing source is
