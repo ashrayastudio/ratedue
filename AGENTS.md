@@ -21,7 +21,8 @@ Missing, stale, conflicting, or `UNKNOWN` evidence keeps the action `BLOCKED`.
   infrastructure. Neither those values nor an Ashraya-branded domain may
   appear in rendered website content, HTML attributes, or customer contact
   links.
-- Public email, when approved, must use the exact RateDue product domain.
+- The founder-approved public support email is exactly
+  `appportfolio.contact@gmail.com`; no other Gmail address or alias is allowed.
   Prefer product-led or role-based wording and omit personal-name copyright
   footers.
 
