@@ -31,7 +31,10 @@ FORBIDDEN_TRACKERS = (
 FORBIDDEN_PUBLIC_IDENTITY = ("ashraya", "ashrayastudio", "ashraya-operated", "©")
 LEGAL_OPERATOR_NAME = "Kalpesh Patel"
 CONTROLLER_DISCLOSURE = f"The data controller is {LEGAL_OPERATOR_NAME}."
-APPROVED_PUBLIC_EMAIL = "appportfolio.contact@gmail.com"
+SUPPORT_EMAIL = "support@madebykal.com"
+PRIVACY_EMAIL = "privacy@madebykal.com"
+SECURITY_EMAIL = "security@madebykal.com"
+APPROVED_PUBLIC_EMAILS = {SUPPORT_EMAIL, PRIVACY_EMAIL, SECURITY_EMAIL}
 EMAIL_PATTERN = re.compile(r"[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}", re.IGNORECASE)
 
 
@@ -175,7 +178,7 @@ def public_policy_errors(
         if parsed.scheme in {"http", "https"} or reference.startswith("//"):
             errors.append(f"external runtime dependency {reference}")
     for email in EMAIL_PATTERN.findall(public_surface_text):
-        if email.casefold() != APPROVED_PUBLIC_EMAIL:
+        if email.casefold() not in APPROVED_PUBLIC_EMAILS:
             errors.append("email outside approved exact mailbox")
     for reference in parser.attribute_values:
         decoded = unquote(reference)
@@ -183,7 +186,7 @@ def public_policy_errors(
             parsed = urlsplit(decoded)
             headers = parse_qsl(parsed.query, keep_blank_values=True)
             if (
-                parsed.path.casefold() != APPROVED_PUBLIC_EMAIL
+                parsed.path.casefold() not in APPROVED_PUBLIC_EMAILS
                 or parsed.netloc
                 or parsed.fragment
                 or any(ord(character) < 32 for character in decoded)
@@ -215,7 +218,7 @@ def run_self_test() -> int:
             print(f"self-test did not reject {expected}", file=sys.stderr)
             return 1
 
-    for address in ("other@gmail.com", "appportfolio.contact+app@gmail.com", "appportfoliocontact@gmail.com", "appportfolio.contact@gmail.com.evil.example", "appportfolio.contact@sub.gmail.com"):
+    for address in ("other@gmail.com", "appportfolio.contact@gmail.com", "support+app@madebykal.com", "hello@madebykal.com", "support@madebykal.com.evil.example", "support@mail.madebykal.com"):
         source = f'<a href="mailto:{address}?subject=RateDue%20support">Contact</a>'
         parser = PageParser()
         parser.feed(source)
@@ -223,13 +226,13 @@ def run_self_test() -> int:
             print("self-test accepted an unapproved mailbox", file=sys.stderr)
             return 1
     for suffix in ("&amp;cc=other%40gmail.com", "&amp;bcc=other%40gmail.com", "&amp;subject=duplicate", "%0D%0ABcc%3Aother%40gmail.com"):
-        source = f'<a href="mailto:{APPROVED_PUBLIC_EMAIL}?subject=RateDue%20support{suffix}">Contact</a>'
+        source = f'<a href="mailto:{SUPPORT_EMAIL}?subject=RateDue%20support{suffix}">Contact</a>'
         parser = PageParser()
         parser.feed(source)
         if not public_policy_errors(source, parser):
             print("self-test accepted an unsafe mail header", file=sys.stderr)
             return 1
-    accepted = f'<a href="mailto:{APPROVED_PUBLIC_EMAIL}?subject=RateDue%20support">{APPROVED_PUBLIC_EMAIL}</a>'
+    accepted = f'<a href="mailto:{SUPPORT_EMAIL}?subject=RateDue%20support">{SUPPORT_EMAIL}</a>'
     parser = PageParser()
     parser.feed(accepted)
     if public_policy_errors(accepted, parser):
@@ -269,9 +272,13 @@ def main() -> int:
         source = path.read_text(encoding="utf-8")
         parser = PageParser()
         parser.feed(source)
-        if relative_path in {Path("support/index.html"), Path("privacy/index.html"), Path("terms/index.html")}:
-            if not any(value.startswith(f"mailto:{APPROVED_PUBLIC_EMAIL}?subject=RateDue%20") for value in parser.attribute_values):
-                errors.append(f"{relative_path}: missing approved support mail link")
+        expected_mailbox = {
+            Path("support/index.html"): SUPPORT_EMAIL,
+            Path("privacy/index.html"): PRIVACY_EMAIL,
+            Path("terms/index.html"): SUPPORT_EMAIL,
+        }.get(relative_path)
+        if expected_mailbox and not any(value.startswith(f"mailto:{expected_mailbox}?subject=RateDue%20") for value in parser.attribute_values):
+            errors.append(f"{relative_path}: missing approved role mail link")
         if not parser.title.strip():
             errors.append(f"{relative_path}: missing title")
         if not parser.description.strip():

@@ -21,10 +21,13 @@ Missing, stale, conflicting, or `UNKNOWN` evidence keeps the action `BLOCKED`.
   infrastructure. Neither those values nor an Ashraya-branded domain may
   appear in rendered website content, HTML attributes, or customer contact
   links.
-- The founder-approved public support email is exactly
-  `appportfolio.contact@gmail.com`; no other Gmail address or alias is allowed.
-  Prefer product-led or role-based wording and omit personal-name copyright
-  footers.
+- Public support is exactly `support@madebykal.com`; privacy requests use
+  `privacy@madebykal.com`, and security reports use
+  `security@madebykal.com`. These verified Made by Kal role addresses replace
+  the legacy Gmail contact on current public surfaces. No catch-all,
+  domain-wide allowlist, unregistered alias, or silent legacy fallback is
+  allowed. Prefer product-led or role-based wording and omit personal-name
+  copyright footers.
 
 The central governing source is
 `/Users/hermes/Developer/personal-digital-products-ops`, especially D-016,
