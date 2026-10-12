@@ -139,3 +139,43 @@ footer > p { margin: 34px 0 0; padding-top: 22px; border-top: 1px solid rgba(255
   .document { margin: 0 14px 64px; padding: 28px 22px; }
   .support-grid { grid-template-columns: 1fr; }
 }
+
+/* Practical examples and questions: static, accessible, no tracking. */
+.examples-section { padding-top: 0; }
+.example-note { margin: 28px 0; max-width: 760px; color: var(--muted); font-size: 14px; }
+.example-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.example-card { padding: 28px; border: 1px solid var(--line); border-radius: 22px; background: var(--white); }
+.example-card h3 { margin: 0 0 20px; font-size: 25px; line-height: 1.2; letter-spacing: -.025em; }
+.example-card > p:not(.eyebrow):not(.example-total) { color: var(--muted); font-size: 15px; }
+.example-card dl { margin: 28px 0 0; font-size: 14px; }
+.example-card dl div { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.example-card dd { margin: 0; font-weight: 700; }
+.example-total { margin: 24px 0; padding: 20px; border-radius: 14px; background: var(--navy); color: var(--white); }
+.example-total strong, .example-total span { display: block; }
+.example-total strong { font-size: 37px; line-height: 1.2; letter-spacing: -.025em; }
+.example-total span { margin-top: 6px; font-size: 12px; color: var(--mint); }
+.example-next { margin-bottom: 0; }
+.calculation-note { margin-top: 26px; padding: 28px 32px; border-left: 4px solid var(--teal); border-radius: 0 18px 18px 0; background: #e7f1ec; }
+.calculation-note h3 { margin: 0; font-size: 23px; }
+.calculation-note p { margin-bottom: 0; color: #405559; }
+.message-section { padding-top: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.message-section .section-heading > p:not(.eyebrow) { color: var(--muted); font-size: 17px; }
+.message-example { padding: 36px; border: 1px solid var(--line); border-radius: 24px; background: var(--white); box-shadow: 0 13px 42px rgba(7,26,60,.05); }
+.message-example blockquote { margin: 24px 0; font-size: 21px; line-height: 1.65; }
+.message-example > p:last-child { font-size: 13px; color: var(--muted); }
+.questions-section { padding-top: 0; }
+.faq-list { margin-top: 40px; }
+.faq-list details { padding: 24px 0; border-bottom: 1px solid var(--line); }
+.faq-list summary { cursor: pointer; color: var(--navy); font-size: 20px; font-weight: 700; }
+.faq-list details p { max-width: 850px; margin: 18px 0 0; color: var(--muted); }
+.faq-list a { text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid #087b80; outline-offset: 5px; }
+@media (max-width: 860px) {
+  .example-grid, .message-section { grid-template-columns: 1fr; }
+  .message-section { gap: 30px; }
+}
+@media (max-width: 480px) {
+  .examples-section, .message-section, .questions-section { padding-top: 0; }
+  .example-card, .message-example, .calculation-note { padding: 24px; }
+  .message-example blockquote { font-size: 19px; }
+}
