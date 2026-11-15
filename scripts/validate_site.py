@@ -19,6 +19,7 @@ PAGE_PATHS = {
     Path("privacy/index.html"): "/privacy/",
     Path("support/index.html"): "/support/",
     Path("terms/index.html"): "/terms/",
+    Path("guides/lawn-care-price-increase-letter/index.html"): "/guides/lawn-care-price-increase-letter/",
 }
 FORBIDDEN_TRACKERS = (
     "google-analytics",

@@ -10,3 +10,5 @@ The site has no runtime dependencies, backend, analytics, or tracking. Edit the 
 - `/privacy/` — privacy policy
 - `/support/` — support and common questions
 - `/terms/` — terms of use
+
+- `/guides/lawn-care-price-increase-letter/` — lawn-care price review guide and sample letter
