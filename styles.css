@@ -179,3 +179,7 @@ footer > p { margin: 34px 0 0; padding-top: 22px; border-top: 1px solid rgba(255
   .example-card, .message-example, .calculation-note { padding: 24px; }
   .message-example blockquote { font-size: 19px; }
 }
+
+/* Official Apple artwork: 48px high with one-quarter-height clear space. */
+.app-store-badge { display: inline-block; padding: 12px; line-height: 0; flex-shrink: 0; }
+.app-store-badge img { display: block; width: auto; height: 48px; }
