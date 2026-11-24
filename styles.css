@@ -33,6 +33,8 @@ h1, h2, h3 { font-family: ui-rounded, -apple-system, BlinkMacSystemFont, "Segoe 
 h1 { max-width: 710px; margin: 0; color: var(--navy); font-size: clamp(45px, 6vw, 78px); line-height: .99; letter-spacing: -.055em; text-wrap: balance; }
 .lede { max-width: 650px; margin: 28px 0 0; color: var(--muted); font-size: clamp(18px, 2vw, 21px); }
 .hero-actions { margin-top: 34px; display: flex; align-items: center; flex-wrap: wrap; gap: 24px; }
+.download-note { flex-basis: 100%; margin: 0; font-size: 16px; }
+.pro-note { margin: 24px 0 0; color: var(--muted); font-size: 16px; }
 .status-pill { display: inline-flex; padding: 11px 17px; border: 1px solid rgba(12, 140, 145, .25); border-radius: 999px; background: rgba(142, 232, 214, .24); color: #086f73; font-size: 13px; font-weight: 700; }
 .text-link { color: var(--navy); font-weight: 700; text-decoration: none; }
 .text-link:hover span { margin-left: 5px; }
@@ -47,6 +49,7 @@ h1 { max-width: 710px; margin: 0; color: var(--navy); font-size: clamp(45px, 6vw
 .count { color: var(--teal); font: 700 12px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
 .summary-card { display: flex; flex-direction: column; padding: 20px; border-radius: 19px; background: var(--navy); color: var(--white); }
 .summary-card span { color: var(--mint); font-size: 12px; font-weight: 700; }
+.summary-card .pro-label { margin-bottom: 8px; font-size: 14px; }
 .summary-card strong { margin-top: 4px; font: 800 34px/1.15 ui-rounded, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
 .summary-card small { margin-top: 4px; color: #bed0df; }
 .rate-card { position: relative; margin-top: 13px; padding: 17px; border: 1px solid var(--line); border-radius: 17px; background: var(--white); box-shadow: 0 8px 24px rgba(7, 26, 60, .06); }
